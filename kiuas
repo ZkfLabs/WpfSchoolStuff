@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp3
+{
+	internal class Program
+	{
+		struct Kiuas
+		{
+			public string name;
+			public int lämpötilä;
+			public bool IsOn;
+		}
+		
+		Kiuas uuni = new Kiuas();
+		void Main(string[] args)
+		{
+			Console.WriteLine("turn on oven? or check data? on/check");
+			string awn = Console.ReadLine().ToLower();
+			switch (awn){
+				case "on":
+					Console.WriteLine("how hot you want it?");
+					string an = Console.ReadLine().ToLower();
+					break;
+				case "check":
+					PrintInfo();
+					break;
+			}
+			checkOven();
+		}
+		public bool checkOven()
+		{
+			if (uuni.lämpötilä > 0)
+			{
+				uuni.IsOn = true;
+				return true;
+			}
+			else
+			{
+				uuni.IsOn = false;
+				return false;
+			}
+		}
+		public void PrintInfo()
+		{
+			Console.WriteLine("Kiuas on?: " + uuni.IsOn);
+			Console.WriteLine("Kiuas lämp?: " + uuni.lämpötilä);
+			Console.WriteLine("Kiuas name?: " + uuni.name);
+        }
+	}
+}
