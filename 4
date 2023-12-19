@@ -1,0 +1,62 @@
+class Kappale
+{
+    public string Nimi
+    public string Artisti
+    public int Kesto
+
+    public Kappale(string nimi, string artisti, int kesto)
+    {
+        Nimi = nimi;
+        Artisti = artisti;
+        Kesto = kesto;
+    }
+
+    public override string ToString()
+    {
+        return $"Kappale: {Nimi} - {Artisti}, Kesto: {Kesto} s";
+    }
+}
+
+class Albumi
+{
+    public string Nimi
+    public string Artisti
+    public List<Kappale> Kappaleet
+
+    public Albumi(string nimi, string artisti)
+    {
+        Nimi = nimi;
+        Artisti = artisti;
+        Kappaleet = new List<Kappale>();
+    }
+
+    public void LisaaKappale(Kappale kappale)
+    {
+        Kappaleet.Add(kappale);
+    }
+
+    public void TulostaAlbumi()
+    {
+        Console.WriteLine($"Albumi: {Nimi} - {Artisti}");
+
+        Console.WriteLine("Kappaleet:");
+        foreach (var kappale in Kappaleet)
+        {
+            Console.WriteLine(kappale.ToString());
+        }
+    }
+}
+
+class Ohjelma
+{
+    static void Main()
+    {
+        Albumi albumi = new Albumi("Esimerkkialbumi", "Esimerkkiartisti");
+
+        albumi.LisaaKappale(new Kappale("Kappale 1", "Artisti 1", 180));
+        albumi.LisaaKappale(new Kappale("Kappale 2", "Artisti 2", 210));
+        albumi.LisaaKappale(new Kappale("Kappale 3", "Artisti 3", 150));
+
+        albumi.TulostaAlbumi();
+    }
+}
